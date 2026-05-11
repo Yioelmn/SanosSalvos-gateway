@@ -1,3 +1,48 @@
+server:
+  port: 8080
+
 spring:
   application:
-    name: gateway
+    name: sanos-salvos-gateway
+
+  cloud:
+    gateway:
+
+      routes:
+
+        - id: mascotas-service
+          uri: https://sanos-salvos-gestmasc-api.onrender.com
+          predicates:
+            - Path=/api/mascotas/**
+          filters:
+            - StripPrefix=0
+
+        - id: etiquetas-service
+          uri: https://sanos-salvos-gestmasc-api.onrender.com
+          predicates:
+            - Path=/api/etiquetas/**
+          filters:
+            - StripPrefix=0
+
+        - id: imagenes-service
+          uri: https://sanos-salvos-gestmasc-api.onrender.com
+          predicates:
+            - Path=/api/imagenes-mascota/**
+          filters:
+            - StripPrefix=0
+
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - OPTIONS
+            allowedHeaders: "*"
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
