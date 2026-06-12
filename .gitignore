@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Llaves secretas de Firebase Admin
+src/main/resources/firebase-keys.json
