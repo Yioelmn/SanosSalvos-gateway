@@ -7,8 +7,11 @@ spring:
 
   cloud:
     gateway:
-
       routes:
+        - id: usuarios-service
+          uri: ${USUARIOS_SERVICE_URL:http://localhost:3000}
+          predicates:
+            - Path=/api/usuarios/**
 
         - id: mascotas-service
           uri: https://sanos-salvos-gestmasc-api.onrender.com
@@ -16,6 +19,7 @@ spring:
             - Path=/api/mascotas/**
           filters:
             - StripPrefix=0
+            - FirebaseAuthFilter
 
         - id: etiquetas-service
           uri: https://sanos-salvos-gestmasc-api.onrender.com
@@ -23,6 +27,7 @@ spring:
             - Path=/api/etiquetas/**
           filters:
             - StripPrefix=0
+            - FirebaseAuthFilter 
 
         - id: imagenes-service
           uri: https://sanos-salvos-gestmasc-api.onrender.com
@@ -30,6 +35,7 @@ spring:
             - Path=/api/imagenes-mascota/**
           filters:
             - StripPrefix=0
+            - FirebaseAuthFilter 
 
       globalcors:
         corsConfigurations:
