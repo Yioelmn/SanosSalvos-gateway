@@ -9,7 +9,7 @@ spring:
     gateway:
       routes:
         - id: usuarios-service
-          uri: ${USUARIOS_SERVICE_URL:http://localhost:3000}
+          uri: https://api-gestusuarios.onrender.com
           predicates:
             - Path=/api/usuarios/**
 
