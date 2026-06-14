@@ -14,7 +14,7 @@ spring:
             - Path=/api/usuarios/**
 
         - id: mascotas-service
-          uri: https://sanos-salvos-gestmasc-api.onrender.com
+          uri: https://api-gestmascotas-node.onrender.com
           predicates:
             - Path=/api/mascotas/**
           filters:
@@ -22,7 +22,7 @@ spring:
             - FirebaseAuthFilter
 
         - id: etiquetas-service
-          uri: https://sanos-salvos-gestmasc-api.onrender.com
+          uri: https://api-gestmascotas-node.onrender.com
           predicates:
             - Path=/api/etiquetas/**
           filters:
@@ -30,7 +30,7 @@ spring:
             - FirebaseAuthFilter 
 
         - id: imagenes-service
-          uri: https://sanos-salvos-gestmasc-api.onrender.com
+          uri: https://api-gestmascotas-node.onrender.com
           predicates:
             - Path=/api/imagenes-mascota/**
           filters:
